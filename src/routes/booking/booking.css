@@ -1,0 +1,32 @@
+input[type=checkbox] {
+    @apply appearance-none w-5 h-5 border-2 border-darkblack-25 rounded-sm bg-white shrink-0 checked:bg-green checked:border-0 cursor-pointer hover:border-green;
+}
+
+.price-slider {
+    @apply flex flex-row h-5 items-center;
+}
+
+.price-slider span {
+    @apply h-[1px] w-full bg-green rounded-full;
+}
+
+.price-slider-2 span, 
+.price-slider-0 span {
+    @apply bg-darkblack-25;
+}
+
+.price-thumb {
+    @apply w-5 h-5 bg-green rounded-full hover:cursor-grab;
+}
+
+.price-thumb-active {
+    @apply transition-shadow hover:cursor-grabbing shadow-slider-thumb shadow-green/25;
+}
+
+label {
+    @apply cursor-pointer;
+}
+
+.mbsc-ios .mbsc-button-standard {
+    @apply bg-green text-green
+}
