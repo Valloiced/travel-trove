@@ -1,5 +1,5 @@
 import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { useCallback, useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 import Search from "../../components/booking/Search"
@@ -10,6 +10,8 @@ import { testData } from "./test";
 
 import "./booking.css";
 import "./booking.scss";
+import NoResults from "../../components/booking/NoResults";
+import Loading from "../../components/booking/Loading";
 
 let startDate = new Date();
 let endDate = new Date(startDate);
@@ -63,7 +65,9 @@ export default function Booking() {
     const params = useParams();
     const navigate = useNavigate();
     const location = useLocation();
-    const queryParams = useMemo(() => new URLSearchParams(location.search), [location]);
+    const queryParams = new URLSearchParams(location.search);
+
+    const [loading, setLoading] = useState(false);
 
     const [properties, setProperties] = useState(testData.result);
 
@@ -83,9 +87,9 @@ export default function Booking() {
 
     const [dates, setDates] = useState([startDate, endDate]);
 
-    const getQuery = useCallback((query) => {
+    const getQuery = (query) => {
         return queryParams.get(query);
-    }, [queryParams]);
+    };
 
     const handleSearch = (extras = null) => {
         const encodedFilterQuery = encodeFiltersToQuery(filters);
@@ -94,16 +98,17 @@ export default function Booking() {
         const query = "?" + (encodedFilterQuery + encodedSearchQuery + extras).replace(/^&+|&+$/g, "");
 
         navigate(`/booking/${destination}` + query, { replace: true });
+        window.scrollTo(0, 0);
     }
 
     const handlePagination = (action) => {
         const page = getQuery("page") || 0;
 
         console.log(page);
-        let pageQuery = "?page=";
+        let pageQuery = "&page=";
         if (action === -1 && Number(page) > 0) {
             pageQuery = pageQuery + (Number(page) - 1);
-        } else {
+        } else if(action === 1) {
             pageQuery = pageQuery + (Number(page) + 1);
         }
 
@@ -127,13 +132,15 @@ export default function Booking() {
                 starRating: getQuery("class")?.split(",").map((star) => "star" + star) || filters.starRating,
                 propertyType: getQuery("property_type")?.split(",") || filters.propertyType,
                 priceRange: { 
-                    min: getQuery("price_min") || filters.priceRange.min, 
-                    max: getQuery("price_max") || filters.priceRange.max
+                    min: Number(getQuery("price_min")) || filters.priceRange.min, 
+                    max: Number(getQuery("price_max")) || filters.priceRange.max
                 }
             })
         }
 
         const fetchData = async () => {
+            setLoading(true);
+
             // Required Params
             const dest = params?.location || destination;
             const checkIn = getQuery("checkin") || dates[0];
@@ -200,17 +207,18 @@ export default function Booking() {
                 setProperties(propertiesResponse.data?.result);
             } catch (error) {
                 console.error(error.message);
+            } finally {
+                setLoading(false);
             }
         }
 
-        // console.log(params);
         updateParams();
-        // fetchData();
+        fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params]);
     
     return (
-        <div className="flex flex-col py-20 px-24 gap-8 max-w-screen-2xl self-center">
+        <div className="flex flex-col py-20 px-24 gap-8 max-w-screen-2xl self-center max-lg:px-2">
             <Search
                 destination={destination}
                 travellerDetails={travellerDetails}
@@ -226,11 +234,21 @@ export default function Booking() {
                     filters={filters}
                     setFilters={setFilters}
                 />
-                <Properties 
-                    properties={properties}
-                    page={getQuery("page") || 0}
-                    handlePagination={handlePagination}
-                />
+                <div className="w-3/4 max-lg:w-full">
+                    {
+                        loading ? (
+                            <Loading />
+                        ) : !properties.length ? (
+                            <NoResults destination={params?.location} />
+                        ) : (
+                            <Properties 
+                                properties={properties}
+                                page={getQuery("page") || 0}
+                                handlePagination={handlePagination}
+                            />
+                        )
+                    }
+                </div>
             </div>
         </div>
     )

@@ -1,0 +1,43 @@
+.gallery-1 {
+    animation: galleryDownCarousel 15s infinite forwards linear;
+}
+
+.gallery-2 {
+    animation: galleryUpCarousel 15s infinite forwards linear;
+}
+
+.gallery-3 {
+    animation: galleryDownCarousel 25s infinite forwards linear;
+}
+
+@keyframes galleryDownCarousel {
+    0% {
+        transform: translateY(-100vh);
+    }
+
+    100% {
+        transform: translateY(0vh);
+    }
+}
+
+@keyframes galleryUpCarousel {
+    0% {
+        transform: translateY(0h);
+    }
+
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+.gallery-1 img,
+.gallery-2 img,
+.gallery-3 img
+{
+    height: 100vh; /* Ensuring each image takes up half the height of the container */
+    object-fit: fill;
+}
+
+.hide-scroll::-webkit-scrollbar {
+    display: none;
+}

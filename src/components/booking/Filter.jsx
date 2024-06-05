@@ -29,7 +29,7 @@ export default function Filter({ filters, setFilters }) {
     }
 
     return (
-        <div className="flex flex-col w-1/4 border-[1px] border-darkblack-25 rounded-md self-start">
+        <div className="flex flex-col w-1/4 border-[1px] border-darkblack-25 rounded-md self-start max-lg:hidden">
             <div className="border-b-[1px] border-b-darkblack-25 p-4">
                 <h1 className="font-gothicA1 font-bold text-black">Filter By</h1>
             </div>
@@ -184,9 +184,8 @@ function PropertyType({ propertyType, handlePropertyType }) {
                         checked={propertyType.includes(type.id)}
                         onChange={handlePropertyType}
                     />
-                    <label htmlFor={type} className="font-gothicA1 text-xs text-black">
+                    <label htmlFor={type.id} className="font-gothicA1 text-xs text-black">
                         {type.name}
-                        {/* {type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} */}
                     </label>
                 </div>
             ))}

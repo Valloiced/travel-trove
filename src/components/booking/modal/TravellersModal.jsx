@@ -1,4 +1,4 @@
-export default function TravellersModal({ details, setDetails, setShowModal }) {
+export default function TravellersModal({ details, setDetails, setShowModal, error }) {
     const handleClick = (e) => {
         const action = e.target.textContent;
         const name = e.target.name;
@@ -57,7 +57,11 @@ export default function TravellersModal({ details, setDetails, setShowModal }) {
                 <select 
                     key={"child" + i}
                     name={"child" + i}
-                    className="font-gothicA1 text-sm py-2 px-2 border-[1px] border-darkblack-50 rounded-md cursor-pointer" 
+                    className={`font-gothicA1 text-sm py-2 px-2 border-[1px] 
+                        ${details.childrenAges["child" + i] 
+                            ? "border-darkblack-75"
+                            : "border-red-600"
+                        } rounded-md cursor-pointer`} 
                     onChange={updateChildrenAges}
                     defaultChecked={true}
                     defaultValue={details.childrenAges["child" + i] || ""}
@@ -69,7 +73,7 @@ export default function TravellersModal({ details, setDetails, setShowModal }) {
             ))
     }
 
-    const canUpdate = Object.keys(details.childrenAges).length === details.children
+    const canUpdate = Object.keys(details.childrenAges).length === details.children;
 
     return (
         <div className="absolute w-full flex flex-col py-8 px-8 bg-white left-0 top-[120%] rounded-md shadow-around gap-2">
@@ -148,6 +152,7 @@ export default function TravellersModal({ details, setDetails, setShowModal }) {
             <div className="grid grid-cols-2 gap-2 border-t-[1px] border-t-darkblack/10 pt-2">
                 {childrenAgeSelects()}
             </div>
+            {error.travellers && <p className="text-sm font-gothicA1 font-light text-red-600">Please complete the children ages to search</p>}
             <button
                 className={`border-2 ${canUpdate ? 'border-darkgreen text-darkgreen hover:bg-darkgreen/10' : 'border-darkblack-25 text-black/50'} rounded-md py-2 font-bold mt-4 `}
                 disabled={!canUpdate}

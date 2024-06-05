@@ -8,7 +8,7 @@ import {
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-import ErrorPage from "./Error";
+import NotFound from "./NotFound";
 import Layout from './routes/Layout';
 
 import Home from './routes/home';
@@ -20,11 +20,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         loader: () => redirect("/home")
+      },
+      {
+        path: "*",
+        element: <NotFound />
       },
       {
         path: "/home",

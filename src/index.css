@@ -8,12 +8,30 @@
   --font-gothicA1: 'Gothic A1', Helvetica, sans-serif;
 }
 
+/* SCROLLBAR */
+
+/* width */
+::-webkit-scrollbar {
+  @apply w-2 px-1;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-lightgrey px-2;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-darkgreen rounded-full w-2;
+}
+
+
 body {
   margin: 0;
   background-color: white;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
