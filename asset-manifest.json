@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/travel-trove/static/css/main.a073704a.css",
+    "main.js": "/travel-trove/static/js/main.4685531a.js",
+    "static/js/453.ff180354.chunk.js": "/travel-trove/static/js/453.ff180354.chunk.js",
+    "static/media/about-bg.png": "/travel-trove/static/media/about-bg.a130bd8016b0846bea47.png",
+    "static/media/home-bg.png": "/travel-trove/static/media/home-bg.fc35d335047eaa9bd4c1.png",
+    "static/media/choose-singapore-bg.png": "/travel-trove/static/media/choose-singapore-bg.9df54690c5a6f39a3d7a.png",
+    "static/media/choose-bangkok-bg.png": "/travel-trove/static/media/choose-bangkok-bg.cc0ee0b9e09d1992b7a3.png",
+    "static/media/contact-bg.png": "/travel-trove/static/media/contact-bg.31789c4487ca54875435.png",
+    "static/media/choose-hongkong-bg.png": "/travel-trove/static/media/choose-hongkong-bg.5d8f68aa5ee228286363.png",
+    "static/media/home-gallery-2.png": "/travel-trove/static/media/home-gallery-2.dcd241942f75e036185b.png",
+    "static/media/explore-paris.jpg": "/travel-trove/static/media/explore-paris.4766c2be23346722df6f.jpg",
+    "static/media/explore-barcelona.jpg": "/travel-trove/static/media/explore-barcelona.19be8569edd0160eb2b7.jpg",
+    "static/media/home-gallery-3.png": "/travel-trove/static/media/home-gallery-3.60fc2b8bec166cf0bde4.png",
+    "static/media/home-gallery-1.png": "/travel-trove/static/media/home-gallery-1.1e77ea105d42efb69ff9.png",
+    "static/media/explore-dubai.jpg": "/travel-trove/static/media/explore-dubai.b97887c7b77c020e3e43.jpg",
+    "static/media/logo-light.png": "/travel-trove/static/media/logo-light.17098ea741fb72130141.png",
+    "static/media/logo-dark.png": "/travel-trove/static/media/logo-dark.fb42c400207413482454.png",
+    "static/media/revicons.eot": "/travel-trove/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/travel-trove/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/travel-trove/static/media/revicons.e8746a624ed098489406.woff",
+    "index.html": "/travel-trove/index.html",
+    "main.a073704a.css.map": "/travel-trove/static/css/main.a073704a.css.map",
+    "main.4685531a.js.map": "/travel-trove/static/js/main.4685531a.js.map",
+    "453.ff180354.chunk.js.map": "/travel-trove/static/js/453.ff180354.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a073704a.css",
+    "static/js/main.4685531a.js"
+  ]
+}
